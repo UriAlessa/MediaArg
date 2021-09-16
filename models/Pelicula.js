@@ -4,8 +4,7 @@ const peliculaSchema = new mongoose.Schema({
     imagen: {type: String},
     titulo: {type: String},
     descripcion: {type: String},
-    usuarioId: {type: mongoose.Types.ObjectId, ref: 'usuario'},
-    aprobado: {type: Boolean, default: true},
+    aprobado: {type: Boolean, default: false},
     genero: {type: String}
 })
 

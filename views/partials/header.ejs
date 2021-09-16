@@ -1,11 +1,15 @@
 <header>
     <div>
-        <h3 class="marca">Media<span>Favorite</span></h3>
+        <img style="width: 200px;" src="../assets/logo_transparent.png" alt="Logo">
     </div>
     <nav>
         <a href="/home" class="<%= title.includes('Home') ? 'active' : null %>">Home</a>
         <a href="/catalogo" class="<%= title.includes('Catalogo') ? 'active' : null %>">Catálogo</a>
-        <a href="/login" class="<%= title.includes('Ingresar') ? 'active' : null %>">Ingresar</a>
-        <a href="/perfil" class="<%= title.includes('Perfil') ? 'active' : null %>">Perfil</a>
+        <% if (!logeado) { %>
+            <a href="/login" class="<%= title.includes('Ingresar') ? 'active' : null %>">Ingresar</a>
+        <% } else { %>
+            <a href="/perfil" class="<%= title.includes('Perfil') ? 'active' : null %>">Perfil</a>
+            <a href="/signout">Salir</a>
+        <%}%>
     </nav>
 </header>

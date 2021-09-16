@@ -4,16 +4,20 @@
     <main class="perfilMain">
         <section class="perfilSection">
             <div>
-                <div class="perfilAvatar" style="background-image: url('https://static.dw.com/image/54705687_303.jpg');"></div>
+                <div class="perfilAvatar" style="background-image: url(<%=avatar%>);"></div>
             </div>
-            <h3><%=usuario.nombre + ' ' + usuario.apellido%></h3>
-            <h3><%= usuario.email %></h3>
-            <% if (usuario.admin) { %>
+            <h3><%=nombre + ' ' + apellido%></h3>
+            <h3><%= email %></h3>
+            <% if (admin) { %>
                 <h3>Eres un usuario administrador.</h3>
             <%} %>
         </section>
         <section class="cargarPelicula">
-            <h2>Cargá una película, esta debe ser aprobada por un administrador.</h2>
+            <%if (editando) {%>
+                <h2 style="color: red;">Estás editando: <%=editando.titulo%></h2>
+            <%} else {%>
+                <h2>Añade una película al catálogo.</h2>
+            <%}%>
             <form action="/pelicula/cargar" method="POST">
                 <div>
                     <label for="titulo"></label>
@@ -36,27 +40,66 @@
                         <label for="genero">Drama</label>
                         <input type="radio" name="genero" value="Terror" required <%=editando && editando.genero === 'Terror' ? 'checked' : null %>>
                         <label for="genero">Terror</label>
+                        <input type="radio" name="genero" value="Comedia" required <%=editando && editando.genero === 'Comedia' ? 'checked' : null %>>
+                        <label for="genero">Comedia</label>
                     </div>
                 </div>
                 <input type="hidden" name="_id" value="<%= editando ? editando._id : null %>">
-                <input type="submit">
+                <div class="formBotones">
+                    <input type="submit">
+                    <%if (editando) {%>
+                        <a class="editar" href="/perfil"><button class="editar">Cancelar</button></a>  
+                    <%}%>
+                </div>
             </form>
         </section>
-        <% if (usuario.admin) { %>
+        <% if (admin) { %>
             <section class="adminPanel">
                 <h2>Panel Administrador.</h2>
-                    <div class="listaPeliculas-admin">
-                        <% peliculas.forEach(pelicula => { %>
-                            <div>
+                    <div class="adminContainer">
+                        <div class="listaPeliculas-admin">
+                            <h5>Total de peliculas: <%=peliculas.length%></h5>
+                            <hr>
+                            <%let peliculasAprobadas = peliculas.filter((pelicula) => pelicula.aprobado)%>
+                            <% peliculasAprobadas.forEach(pelicula => { %>
                                 <div>
-                                    <p><%=pelicula.titulo%></p>
+                                    <div>
+                                        <p><%=pelicula.titulo%></p>
+                                    </div>
+                                    <div>
+                                        <a class="editar" href="/editar-pelicula/<%= pelicula._id %>"><button class="editar">Editar</button></a>  
+                                        <a class="borrar" href="/borrar-pelicula/<%= pelicula._id %>"><button class="borrar">Borrar</button></a>
+                                    </div>
                                 </div>
+                            <% }) %>
+                        </div>
+                        <div class="listaPeliculas-admin">
+                            <%let peliculaNoAprobada = peliculas.filter((pelicula) => !pelicula.aprobado)%>
+                            <h5>Peliculas pendientes de aprobación: <%=peliculaNoAprobada.length%></h5>
+                            <hr>
+                            <% peliculaNoAprobada.forEach(pelicula => { %>
                                 <div>
-                                    <a href="/borrar-pelicula/<%= pelicula._id %>"><button>Borrar</button></a>
-                                    <a href="/editar-pelicula/<%= pelicula._id %>"><button>Editar</button></a>  
+                                    <div>
+                                        <p><%=pelicula.titulo%></p>
+                                    </div>
+                                    <div>
+                                        <a class="editar" href="/editar-pelicula/<%= pelicula._id %>"><button class="editar">Aprobar</button></a>  
+                                        <a class="borrar" href="/borrar-pelicula/<%= pelicula._id %>"><button class="borrar">No Aprobar</button></a>
+                                    </div>
                                 </div>
-                            </div>
-                        <% }) %>
+                            <% }) %>
+                        </div>
+                        <div class="listaUsuarios-admin">
+                            <h5>Total de usuarios: <%=usuarios.length%></h5>
+                            <hr>
+                            <% usuarios.forEach(usuario => { %>
+                                <div>
+                                    <div>
+                                        <p><%=usuario.nombre + ' ' + usuario.apellido%> - <%=usuario.email%><%=usuario.admin ? ' - Admin' : ''%></p>
+                                    </div>
+                                </div>
+                            <% }) %>
+                        </div>
                     </div>
             </section>
         <%}%>

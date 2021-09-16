@@ -2,19 +2,6 @@
 <body>
     <%- include('partials/header.ejs') %> 
     <main class="catalogoMain">
-        <div class="buscador">
-            <div>
-                <i class="fas fa-search"></i><input class="searchInput" type="text" name="pelicula" placeholder="Nombre de la pelicula">
-            </div>
-            <div>
-                <input type="checkbox" name="accion" checked>
-                <label for="accion">Acción</label>
-                <input type="checkbox" name="accion" checked>
-                <label for="accion">Drama</label>
-                <input type="checkbox" name="accion" checked>
-                <label for="accion">Terror</label>
-            </div>
-        </div>
         <div class="peliculasContainer">
             <div class="wrapper">
                 <% if (peliculas.lenght === 0) { %>

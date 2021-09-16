@@ -14,7 +14,7 @@ body {
 
 /* Bordes para divs */
 
-.card, .welcomeContainer, .peliculaCard, .loginMain form, .perfilSection, .cargarPelicula, .adminPanel, section.cargarPelicula form input {
+.card, .welcomeContainer, .peliculaCard, .loginMain form, .perfilSection, .cargarPelicula, .adminPanel, section.cargarPelicula form input, .editar, .borrar {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -31,9 +31,9 @@ header {
     justify-content: space-between;
 }
 
-header div h3 {
-    color: white;
+header div img{
     margin-left: 5vw;
+    margin-top: 1vh;
 }
 
 .marca span{
@@ -227,7 +227,7 @@ div.hero {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-image: url('https://i.imgur.com/PKOASVd.jpg');
+    background-image: url('https://www.filmin.es/assets/img/instances/es/pricing-page/hero-hollywoodstudios.jpg');
     background-size: cover;
     background-position: center;
 }
@@ -323,25 +323,6 @@ div.peliculasContainer {
     min-height: 100vh;
 }
 
-/* div.peliculaCard {
-    width: 15%;
-    height: 40vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    background-color: #6C63FF;
-    padding: 0vh 1vw;
-    margin-bottom: 2vh;
-} */
-
-/* div.peliculaCard div {
-    background-size: cover;
-    background-position: center;
-    height: 30vh;
-    width: 10vw;
-} */
-
 .wrapper {
     display: flex;
     width: 100%;
@@ -361,6 +342,7 @@ div.peliculasContainer {
     transition: all .5s cubic-bezier(.8,.5,.2,1.4);
     overflow: hidden;
     position: relative;
+    margin: 1vh 0;
 }
 
 .peliculaCard img{
@@ -484,7 +466,7 @@ section.cargarPelicula h2 {
 }
 
 section.cargarPelicula form {
-    margin-top: 5vh;
+    margin-top: 2vh;
     height: 20vh;
     display: flex;
     flex-direction: column;
@@ -495,6 +477,16 @@ section.cargarPelicula form {
 section.cargarPelicula form input {
     padding: .5vh .5vw;
     border: none;
+}
+
+input[type="submit"] {
+    cursor: pointer;
+}
+
+div.formBotones{
+    display: flex;
+    width: 30%;
+    justify-content: space-around;
 }
 
 div.radioButtonsContainer {
@@ -514,17 +506,26 @@ section.adminPanel {
     height: 40vh;
     width: 99%;
     margin-top: 2vh;
+    display: flex;
+    flex-direction: column;
 }
 
 section.adminPanel h2 {
     text-align: center;
+    padding: 1vh;
 }
 
-div.listaPeliculas-admin {
+div.adminContainer{
+    display: flex;
+    justify-content: space-around;
+}
+
+div.listaPeliculas-admin, div.listaUsuarios-admin {
     padding: 1vh 1vw;
     width: 30%;
     height: 30vh;
     overflow-y: scroll;
+    border: 1px solid black;
 }
 
 div.listaPeliculas-admin div{
@@ -535,6 +536,30 @@ div.listaPeliculas-admin div{
 
 div.listaPeliculas-admin div div img{
     width: 100px;
+}
+
+div.listaPeliculas-admin > hr, div.listaUsuarios-admin > hr {
+    margin: 1vh 0;
+}
+
+div.listaUsuarios-admin {
+    width: 30%;
+    height: 30vh;
+}
+
+button.borrar, button.editar {
+    background-color: red;
+    padding: .5vh .5vw;
+    color: black;
+    font-weight: bold;
+    margin-left: 1vw;
+    border: none;
+    cursor: pointer;
+}
+
+button.editar {
+    background-color: orange;
+    margin-left: 0vw;
 }
 
 
@@ -586,5 +611,86 @@ div.listaPeliculas-admin div div img{
     100% {
         clip-path: var(--slice-1);
         transform: translate(0);
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+    nav {
+        width: 35%;
+    }
+
+    .perfilSection h3{
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 768px ) and (max-width: 1024px) {
+    nav {
+        width: 35%;
+    }
+
+    .perfilSection h3{
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 620px) and (max-width: 767px) {
+    nav {
+        width: 50%;
+    }
+    .perfilSection h3{
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 425px) and (max-width: 619px) {
+    nav {
+        width: 80%;
+    }
+
+    header div img {
+        display: none;
+    }
+
+    .perfilMain {
+        flex-direction: column;
+    }
+
+    .perfilSection {
+        width: 100% !important;
+        margin-bottom: 1vh;
+    }
+
+    .cargarPelicula {
+        width: 100% !important;
+        margin-bottom: 1vh;
+    }
+
+    .cargarPelicula form {
+        justify-content: space-between;
+        height: 30vh !important;
+    }
+
+    section.cargarPelicula form input  {
+        padding: 1vh 1vw;
+    }
+
+    .adminPanel{
+        min-height: 100vh;
+        padding: 1vh 1vw;
+    }
+
+    .adminContainer {
+        flex-direction: column;
+    }
+
+    .listaPeliculas-admin{
+        width: 100% !important;
+        margin-bottom: 2vh;
+    }
+
+    .listaUsuarios-admin{
+        width: 100% !important;
+        margin: 0 1vw 1vh 1vw;
     }
 }

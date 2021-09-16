@@ -3,7 +3,6 @@ const router = express.Router()
 const viewsControllers = require('../controllers/viewsControllers')
 const cuentasControllers = require('../controllers/cuentasControllers')
 const peliculasControllers = require('../controllers/peliculasControllers')
-const { get } = require('mongoose')
 
 
 router.route('/')
@@ -17,9 +16,10 @@ router.route('/catalogo')
 
 router.route('/login')
 .get(viewsControllers.login)
+.post(cuentasControllers.logearse)
 
-router.route('/signin')
-.get(viewsControllers.signin)
+router.route('/signup')
+.get(viewsControllers.signup)
 .post(cuentasControllers.nuevaCuenta)
 
 router.route('/perfil')
@@ -33,5 +33,8 @@ router.route('/borrar-pelicula/:_id')
 
 router.route('/editar-pelicula/:_id')
 .get(peliculasControllers.editarPelicula)
+
+router.route('/signout')
+.get(cuentasControllers.deslogear)
 
 module.exports = router

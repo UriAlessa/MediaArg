@@ -4,16 +4,14 @@ const Usuario = require("../models/Usuario");
 
 const peliculasControllers = {
     nuevaPelicula: async (req, res) => {
-        const {imagen, titulo, descripcion, aprobado, usuarioId, genero, _id} = req.body
+        const {imagen, titulo, descripcion, aprobado, genero, _id} = req.body
         let nuevaPelicula; 
-        
         if (!_id) {
             nuevaPelicula = new Pelicula({
                 imagen,
                 titulo,
                 descripcion,
                 aprobado,
-                usuarioId: '61422400389dbc3a24d589e8',
                 genero
             })
         } else {
@@ -22,10 +20,10 @@ const peliculasControllers = {
             nuevaPelicula.imagen = imagen
             nuevaPelicula.descripcion = descripcion
             nuevaPelicula.genero = genero
+            nuevaPelicula.aprobado = true
         }
         try {
             await nuevaPelicula.save()
-            console.log(nuevaPelicula)
             res.redirect('/catalogo')
         } catch(e) {
             console.log(e)
@@ -36,15 +34,20 @@ const peliculasControllers = {
         res.redirect('/catalogo')
     },
     editarPelicula: async (req, res) => {
-        const usuario = await Usuario.findById('61422400389dbc3a24d589e8')
         let pelicula = await Pelicula.findOne({_id: req.params._id})
         const peliculas = await Pelicula.find()
-        console.log(pelicula)
+        const usuarios = await Usuario.find()
         res.render('perfil', {
             title: 'Editar Pelicula',
             editando: pelicula,
-            usuario,
-            peliculas
+            usuarios,
+            peliculas,
+            logeado: req.session.logeado,
+            nombre: req.session.nombre,
+            apellido: req.session.apellido,
+            avatar: req.session.avatar,
+            email: req.session.email,
+            admin: req.session.admin
         })
     }
 }

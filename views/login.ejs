@@ -12,20 +12,16 @@
     </header>
     <main class="loginMain">
         <h1>Ingresa a tu cuenta</h1>
-        <form method="" action="" id="login-form" class="login-form" autocomplete="off">
+        <form method="POST" action="/login" id="login-form" class="login-form" autocomplete="off">
             <div>
               <label class="label-email">
                 <input type="email" class="text" name="email" placeholder="Email" tabindex="1" required />
                 <span class="required">Email</span>
               </label>
             </div>
-            <input type="checkbox" name="show-password" class="show-password a11y-hidden" id="show-password" tabindex="3" />
-            <label class="label-show-password" for="show-password">
-              <span>Mostrar contraseña</span>
-            </label>
             <div>
               <label class="label-password">
-                <input type="text" class="text" name="contraseña" placeholder="Contraseña" tabindex="2" required />
+                <input type="password" class="text" name="contraseña" placeholder="Contraseña" tabindex="3" required />
                 <span class="required">Contraseña</span>
               </label>
             </div>
@@ -43,6 +39,6 @@
               <div class="shirt-2"></div>
             </figure>
         </form>
-        <a href="/signin">¿Primera vez? Crea una cuenta desde aquí</a>
+        <a href="/signup">¿Primera vez? Crea una cuenta desde aquí</a>
     </main>
 <%- include('partials/footer.ejs') %> 
