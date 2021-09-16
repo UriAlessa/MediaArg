@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="form.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
-    <title>Ingresar - MediaFavorite</title>
-</head>
+<%- include('partials/formHead.ejs') %>
 <body>
     <header>
         <div>
@@ -58,25 +45,4 @@
         </form>
         <a href="/signin">¿Primera vez? Crea una cuenta desde aquí</a>
     </main>
-    <footer>
-        <div class="container__footer">
-            <div class="box__footer">
-                <div class="terms">
-                    <p>Página desarrollada en el Bootcamp MERN Full Stack, dado por MindHub.</p>
-                </div>
-            </div>
-            <div class="box__footer">
-                <h2>Redes Sociales</h2>
-                <a href="#"> <i class="fab fa-facebook-square"></i> Facebook</a>
-                <a href="#"><i class="fab fa-twitter-square"></i> Twitter</a>
-                <a href="#"><i class="fab fa-linkedin"></i> Linkedin</a>
-                <a href="#"><i class="fab fa-instagram-square"></i> Instagram</a>
-            </div>
-        </div>
-        <div class="box__copyright">
-            <hr>
-            <p>Todos los derechos reservados © 2021 <b>Uriel Alessandro</b></p>
-        </div>
-    </footer>
-</body>
-</html>
+<%- include('partials/footer.ejs') %> 

@@ -1,0 +1,56 @@
+<%- include('partials/formHead.ejs') %> 
+    <header>
+        <div>
+            <h3 class="marca">Media<span>Favorite</span></h3>
+        </div>
+        <nav>
+            <a href="/home">Home</a>
+            <a href="/catalogo">Catálogo</a>
+            <a href="#" class="active">Ingresar</a>
+        </nav>
+    </header>
+    <main class="loginMain">
+        <h1>Crea una cuenta</h1>
+        <form method="POST" action="/signin" id="login-form" class="login-form" autocomplete="off">
+            <div>
+              <label class="label-email" for="nombre">
+                <input type="text" class="text" name="nombre" placeholder="Nombre" tabindex="1" required />
+                <span class="required">Nombre</span>
+              </label>
+              <label class="label-email" for="apellido">
+                <input type="text" class="text" name="apellido" placeholder="Apellido" tabindex="2" required />
+                <span class="required">Apellido</span>
+              </label>
+              <label class="label-email" for="email">
+                <input type="email" class="text" name="email" placeholder="Email" tabindex="3" required />
+                <span class="required">Email</span>
+              </label>
+            </div>
+            <input type="checkbox" name="show-password" class="show-password a11y-hidden" id="show-password" tabindex="4" />
+            <div>
+              <label class="label-password" for="contraseña">
+                <input type="password" class="text" name="contraseña" placeholder="Contraseña" tabindex="5" required />
+                <span class="required">Contraseña</span>
+              </label>
+              <label class="label-email" for="avatar">
+                <input type="text" class="text" name="avatar" placeholder="Ingresa la URL del avatar" tabindex="6" required />
+                <span class="required">Avatar</span>
+              </label>
+            </div>
+            <input type="submit" value="enviar" />
+            <figure aria-hidden="true">
+              <div class="person-body"></div>
+              <div class="neck skin"></div>
+              <div class="head skin">
+                <div class="eyes"></div>
+                <div class="mouth"></div>
+              </div>
+              <div class="hair"></div>
+              <div class="ears"></div>
+              <div class="shirt-1"></div>
+              <div class="shirt-2"></div>
+            </figure>
+          </form>
+          <a href="/login">¿Ya tienes una cuenta? Ingresa desde aquí</a>
+    </main>
+<%- include('partials/footer.ejs') %> 

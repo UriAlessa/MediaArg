@@ -1,0 +1,42 @@
+<%- include('partials/head.ejs') %> 
+<body>
+    <%- include('partials/header.ejs') %> 
+    <main class="catalogoMain">
+        <div class="buscador">
+            <div>
+                <i class="fas fa-search"></i><input class="searchInput" type="text" name="pelicula" placeholder="Nombre de la pelicula">
+            </div>
+            <div>
+                <input type="checkbox" name="accion" checked>
+                <label for="accion">Acción</label>
+                <input type="checkbox" name="accion" checked>
+                <label for="accion">Drama</label>
+                <input type="checkbox" name="accion" checked>
+                <label for="accion">Terror</label>
+            </div>
+        </div>
+        <div class="peliculasContainer">
+            <div class="wrapper">
+                <% if (peliculas.lenght === 0) { %>
+                    <h2>No hay peliculas en este momento.</h2>
+                <% } else { %>
+                    <% let peliculasAprobadas = peliculas.filter(pelicula => pelicula.aprobado) %>
+                    <% peliculasAprobadas.forEach(pelicula => { %>
+                        <div class="peliculaCard">
+                            <img src="<%= pelicula.imagen %>" alt="">
+                            <div class="descriptions">
+                                <h1><%= pelicula.titulo %></h1>
+                                <p>
+                                    <%= pelicula.descripcion %>
+                                </p>
+                                <p>
+                                    Genero: <%= pelicula.genero %>
+                                </p>
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } %>
+            </div>
+        </div>
+    </main>
+<%- include('partials/footer.ejs') %> 

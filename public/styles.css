@@ -14,7 +14,7 @@ body {
 
 /* Bordes para divs */
 
-.card, .welcomeContainer, .peliculaCard, .loginMain form {
+.card, .welcomeContainer, .peliculaCard, .loginMain form, .perfilSection, .cargarPelicula, .adminPanel, section.cargarPelicula form input {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -440,7 +440,105 @@ main.loginMain {
 }
 
 
-/* */
+/* perfil.html */
+
+main.perfilMain {
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    padding: 1vh 1vw;
+    flex-wrap: wrap;
+}
+
+section.perfilSection {
+    background-color: #c8ccce;
+    height: 40vh;
+    width: 26%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div.perfilAvatar {
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    background-position: center;
+    background-size: cover;
+    margin: 5vh 0vw 2.5vh 0vw;
+}
+
+section.cargarPelicula {
+    background-color: #c8ccce;
+    height: 40vh;
+    width: 70vw;
+    margin-left: 1vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section.cargarPelicula h2 {
+    text-align: center;
+    margin-top: 1vh;
+}
+
+section.cargarPelicula form {
+    margin-top: 5vh;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+section.cargarPelicula form input {
+    padding: .5vh .5vw;
+    border: none;
+}
+
+div.radioButtonsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+div.radioButtonsContainer h4{
+    margin-bottom: 1vh;
+}
+
+section.adminPanel {
+    background-color: #c8ccce;
+    height: 40vh;
+    width: 99%;
+    margin-top: 2vh;
+}
+
+section.adminPanel h2 {
+    text-align: center;
+}
+
+div.listaPeliculas-admin {
+    padding: 1vh 1vw;
+    width: 30%;
+    height: 30vh;
+    overflow-y: scroll;
+}
+
+div.listaPeliculas-admin div{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1vh;
+}
+
+div.listaPeliculas-admin div div img{
+    width: 100px;
+}
+
+
+
 
 /* Keyframes >  */
 

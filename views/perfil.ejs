@@ -1,0 +1,64 @@
+<%- include('partials/head.ejs') %>
+<body>
+    <%- include('partials/header.ejs') %>
+    <main class="perfilMain">
+        <section class="perfilSection">
+            <div>
+                <div class="perfilAvatar" style="background-image: url('https://static.dw.com/image/54705687_303.jpg');"></div>
+            </div>
+            <h3><%=usuario.nombre + ' ' + usuario.apellido%></h3>
+            <h3><%= usuario.email %></h3>
+            <% if (usuario.admin) { %>
+                <h3>Eres un usuario administrador.</h3>
+            <%} %>
+        </section>
+        <section class="cargarPelicula">
+            <h2>Cargá una película, esta debe ser aprobada por un administrador.</h2>
+            <form action="/pelicula/cargar" method="POST">
+                <div>
+                    <label for="titulo"></label>
+                    <input type="text" name="titulo" placeholder="Titulo de la pelicula..." value="<%= editando ? editando.titulo : ''%>">   
+                </div>
+                <div>
+                    <label for="descripcion"></label>
+                    <input type="text" name="descripcion" placeholder="Descripción de la película..." value="<%= editando ? editando.descripcion : ''%>">
+                </div>
+                <div>
+                    <label for="imagen"></label>
+                    <input type="text" name="imagen" placeholder="Introduce la URL de la imagen..." value="<%= editando ? editando.imagen : ''%>">
+                </div>
+                <div class="radioButtonsContainer">
+                    <h4>¿En qué genero encaja más esta pelicula? Aproximadamente.</h4>
+                    <div>
+                        <input type="radio" name="genero" value="Accion" required value="<%=editando && editando.genero === 'Accion' ? 'checked' : null %> ">
+                        <label for="genero">Acción</label>
+                        <input type="radio" name="genero" value="Drama" required <%=editando && editando.genero === 'Drama' ? 'checked' : null %>>
+                        <label for="genero">Drama</label>
+                        <input type="radio" name="genero" value="Terror" required <%=editando && editando.genero === 'Terror' ? 'checked' : null %>>
+                        <label for="genero">Terror</label>
+                    </div>
+                </div>
+                <input type="hidden" name="_id" value="<%= editando ? editando._id : null %>">
+                <input type="submit">
+            </form>
+        </section>
+        <% if (usuario.admin) { %>
+            <section class="adminPanel">
+                <h2>Panel Administrador.</h2>
+                    <div class="listaPeliculas-admin">
+                        <% peliculas.forEach(pelicula => { %>
+                            <div>
+                                <div>
+                                    <p><%=pelicula.titulo%></p>
+                                </div>
+                                <div>
+                                    <a href="/borrar-pelicula/<%= pelicula._id %>"><button>Borrar</button></a>
+                                    <a href="/editar-pelicula/<%= pelicula._id %>"><button>Editar</button></a>  
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+            </section>
+        <%}%>
+    </main>
+<%- include('partials/footer.ejs') %>

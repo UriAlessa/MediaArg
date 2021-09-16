@@ -1,0 +1,30 @@
+<%- include('partials/head.ejs') %> 
+    <div class="hero">
+        <%- include('partials/header.ejs') %> 
+        <div class="welcomeContainer">
+            <h1>Bienvenido a Media<span style="color: red;">Favorite</span></h1>
+            <h3>Añade tus peliculas favoritas al catálogo, puntúalas y demás!</h3>
+        </div>
+        <div class="wave" style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #fff;"></path></svg></div>
+    </div>
+    <main class="homeMain">
+        <h2>Sobre Media<span style="color: red;">Favorite</span></h2>
+        <section class="cardsSection">
+            <div class="card">
+                <h3>Crea tu cuenta de usuario</h3>
+                <div style="background-image: url('https://i.imgur.com/0vu7vKJ.png')"></div>
+                <p>Al crearte una cuenta de usuario, podrás personalizar tu perfil, cargar películas, y añadirlas a tu lista de favoritos!</p>
+            </div>
+            <div class="card">
+                <h3>Explora el catálogo</h3>
+                <div style="background-image: url('https://i.imgur.com/mRt5l8x.png')"></div>
+                <p>Explora nuestro catálogo de películas, filtra por género, título y puntuación!</p>
+            </div>
+            <div class="card">
+                <h3>Añade una película</h3>
+                <div style="background-image: url('https://www.upload.ee/image/13472861/Data_Arranging_Outline.png')"></div>
+                <p>Al crearte una cuenta, podrás cargar una película desde la sección de usuarios, esta será revisada por un administrador antes de ser publicada.</p>
+            </div>
+        </section>
+    </main>
+<%- include('partials/footer.ejs') %> 
