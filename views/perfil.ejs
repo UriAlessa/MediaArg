@@ -21,15 +21,15 @@
             <form action="/pelicula/cargar" method="POST">
                 <div>
                     <label for="titulo"></label>
-                    <input type="text" name="titulo" placeholder="Titulo de la pelicula..." value="<%= editando ? editando.titulo : ''%>">   
+                    <input required type="text" name="titulo" placeholder="Titulo de la pelicula..." value="<%= editando ? editando.titulo : ''%>">   
                 </div>
                 <div>
                     <label for="descripcion"></label>
-                    <input type="text" name="descripcion" placeholder="Descripción de la película..." value="<%= editando ? editando.descripcion : ''%>">
+                    <input required type="text" name="descripcion" placeholder="Descripción de la película..." value="<%= editando ? editando.descripcion : ''%>">
                 </div>
                 <div>
                     <label for="imagen"></label>
-                    <input type="text" name="imagen" placeholder="Introduce la URL de la imagen..." value="<%= editando ? editando.imagen : ''%>">
+                    <input required type="text" name="imagen" placeholder="Introduce la URL de la imagen..." value="<%= editando ? editando.imagen : ''%>">
                 </div>
                 <div class="radioButtonsContainer">
                     <h4>¿En qué genero encaja más esta pelicula? Aproximadamente.</h4>

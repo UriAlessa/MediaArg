@@ -14,11 +14,11 @@
         <form method="POST" action="/signup" id="login-form" class="login-form" autocomplete="off">
             <div>
               <label class="label-email" for="nombre">
-                <input type="text" class="text" name="nombre" placeholder="Nombre" tabindex="1" required />
+                <input min="2" max="20" type="text" class="text" name="nombre" placeholder="Nombre" tabindex="1" required />
                 <span class="required">Nombre</span>
               </label>
               <label class="label-email" for="apellido">
-                <input type="text" class="text" name="apellido" placeholder="Apellido" tabindex="2" required />
+                <input min="2" max="20" type="text" class="text" name="apellido" placeholder="Apellido" tabindex="2" required />
                 <span class="required">Apellido</span>
               </label>
               <label class="label-email" for="email">
@@ -29,12 +29,12 @@
             <input type="checkbox" name="show-password" class="show-password a11y-hidden" id="show-password" tabindex="4" />
             <div>
               <label class="label-password" for="contraseña">
-                <input type="password" class="text" name="contraseña" placeholder="Contraseña" tabindex="5" required />
+                <input min="6" type="password" class="text" name="contraseña" placeholder="Contraseña" tabindex="5" required />
                 <span class="required">Contraseña</span>
               </label>
               <label class="label-email" for="avatar">
-                <input type="text" class="text" name="avatar" placeholder="Ingresa la URL del avatar" tabindex="6" required />
-                <span class="required">Avatar</span>
+                <input type="text" class="text" name="avatar" placeholder="Ingresa la URL del avatar" tabindex="6" />
+                <span class="required">Avatar (Opcional)</span>
               </label>
             </div>
             <input type="submit" value="enviar" />
@@ -51,6 +51,9 @@
               <div class="shirt-2"></div>
             </figure>
           </form>
+          <% if (error) { %>
+            <h4 style="color: red;"><%= error %></h4>
+          <% } %>
           <a href="/login">¿Ya tienes una cuenta? Ingresa desde aquí</a>
     </main>
 <%- include('partials/footer.ejs') %> 

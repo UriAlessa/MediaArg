@@ -27,13 +27,15 @@ const viewsControllers = {
     login: (req, res) => {
         res.render('login', {
             title: 'Ingresar',
-            logeado: req.session.logeado
+            logeado: req.session.logeado,
+            error: null
         })
     },
     signup: (req, res) => {
         res.render('signup', {
             title: 'Registrarse',
-            logeado: req.session.logeado
+            logeado: req.session.logeado,
+            error: null
         })
     },
     perfil: async (req, res) => {

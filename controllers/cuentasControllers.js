@@ -5,6 +5,9 @@ const bcryptjs = require('bcryptjs')
 
 const cuentasControllers = {
     nuevaCuenta: async (req, res) => {
+        if (req.body.avatar === '') {
+            req.body.avatar = 'https://i.imgur.com/gjamR21.png'
+        }
         const {nombre, apellido, avatar, email, contraseña, admin} = req.body
         let contraseñaHasheada = bcryptjs.hashSync(contraseña)
         const nuevaCuenta = new Usuario({nombre, apellido, avatar, email, contraseña: contraseñaHasheada, admin: admin ? true : false})
@@ -12,15 +15,34 @@ const cuentasControllers = {
             let usuarioExiste = await Usuario.findOne({email: email})
             if (usuarioExiste) throw new Error('Ese email ya está en uso, utiliza otro o inicia sesión.')
             await nuevaCuenta.save()
-            res.redirect('/login')
+            req.session.logeado = true
+            req.session.nombre = nuevaCuenta.nombre
+            req.session.apellido = nuevaCuenta.apellido
+            req.session.avatar = nuevaCuenta.avatar
+            req.session.email = nuevaCuenta.email,
+            req.session.admin = nuevaCuenta.admin
+            res.render('perfil', {
+                title: 'Tu Perfil',
+                editando: false,
+                logeado: req.session.logeado,
+                nombre: req.session.nombre,
+                apellido: req.session.apellido,
+                avatar: req.session.avatar,
+                email: req.session.email,
+                admin: req.session.admin,
+            })
         } catch(error) {
             console.log(error)
+            res.render('signup', {
+                title: 'Registrarse',
+                error: error,
+            })
         }
     },
     logearse: async (req, res) => {
         const {email, contraseña} = req.body
         const usuarios = await Usuario.find()
-        let peliculas = await Pelicula.find()
+        const peliculas = await Pelicula.find()
         try {
             let usuario = await Usuario.findOne({email})
             if (!usuario) throw new Error('El usuario o la contraseña no existe')
@@ -46,6 +68,10 @@ const cuentasControllers = {
             })
         } catch (error) {
             console.log(error)
+            res.render('login', {
+                title: 'Ingresar',
+                error: error,
+            })
         }
     },
     deslogear: (req, res) => {
