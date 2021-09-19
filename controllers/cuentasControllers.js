@@ -36,6 +36,7 @@ const cuentasControllers = {
             res.render('signup', {
                 title: 'Registrarse',
                 error: error,
+                logeado: null
             })
         }
     },
@@ -67,10 +68,10 @@ const cuentasControllers = {
                 peliculas
             })
         } catch (error) {
-            console.log(error)
             res.render('login', {
                 title: 'Ingresar',
                 error: error,
+                logeado: null
             })
         }
     },

@@ -2,6 +2,9 @@
 <body>
     <%- include('partials/header.ejs') %> 
     <main class="catalogoMain">
+        <%if (editando) {%>
+            <h4>Pelicula enviada a revisión, esta será revisada por un administrador antes de ser publicada.</h4>
+        <%}%>
         <div class="peliculasContainer">
             <div class="wrapper">
                 <% if (peliculas.lenght === 0) { %>

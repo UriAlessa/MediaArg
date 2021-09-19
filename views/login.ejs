@@ -1,15 +1,6 @@
 <%- include('partials/formHead.ejs') %>
 <body>
-    <header>
-        <div>
-            <h3 class="marca">Media<span>Favorite</span></h3>
-        </div>
-        <nav>
-            <a href="/home">Home</a>
-            <a href="/catalogo">Catálogo</a>
-            <a href="#" class="active">Ingresar</a>
-        </nav>
-    </header>
+    <%- include('partials/header.ejs') %>
     <main class="loginMain">
         <h1>Ingresa a tu cuenta</h1>
         <form method="POST" action="/login" id="login-form" class="login-form" autocomplete="off">

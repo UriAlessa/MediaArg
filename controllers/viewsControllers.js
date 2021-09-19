@@ -21,22 +21,27 @@ const viewsControllers = {
         res.render('catalogo', {
             title: 'Catalogo',
             peliculas,
-            logeado: req.session.logeado
+            logeado: req.session.logeado,
+            editando: null
         })
     },
     login: (req, res) => {
-        res.render('login', {
-            title: 'Ingresar',
-            logeado: req.session.logeado,
-            error: null
-        })
+        !req.session.logeado
+            ? res.render('login', {
+                title: 'Ingresar',
+                logeado: req.session.logeado,
+                error: null
+            })
+            : res.redirect('/home')
     },
     signup: (req, res) => {
-        res.render('signup', {
+        !req.session.logeado 
+        ? res.render('signup', {
             title: 'Registrarse',
             logeado: req.session.logeado,
             error: null
         })
+        : res.redirect('/home')
     },
     perfil: async (req, res) => {
         const peliculas = await Pelicula.find()

@@ -4,9 +4,13 @@ const Usuario = require("../models/Usuario");
 
 const peliculasControllers = {
     nuevaPelicula: async (req, res) => {
-        const {imagen, titulo, descripcion, aprobado, genero, _id} = req.body
+        let {imagen, titulo, descripcion, aprobado, genero, _id} = req.body
+        const peliculas = await Pelicula.find()
         let nuevaPelicula; 
         if (!_id) {
+            if (req.session.admin) {
+                aprobado = true
+            }
             nuevaPelicula = new Pelicula({
                 imagen,
                 titulo,
@@ -24,14 +28,23 @@ const peliculasControllers = {
         }
         try {
             await nuevaPelicula.save()
-            res.redirect('/catalogo')
+            if (!req.session.admin) {
+                res.render('catalogo', {
+                    title: 'Catalogo',
+                    peliculas,
+                    logeado: req.session.logeado,
+                    editando: true
+                })
+            } else {
+                res.redirect('/catalogo')
+            }
         } catch(e) {
             console.log(e)
         }
     },
     borrarPelicula: async (req, res) => {
         await Pelicula.findOneAndDelete({_id: req.params._id})
-        res.redirect('/catalogo')
+        res.redirect('/perfil')
     },
     editarPelicula: async (req, res) => {
         let pelicula = await Pelicula.findOne({_id: req.params._id})
