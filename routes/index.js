@@ -4,11 +4,7 @@ const viewsControllers = require('../controllers/viewsControllers')
 const cuentasControllers = require('../controllers/cuentasControllers')
 const peliculasControllers = require('../controllers/peliculasControllers')
 
-
 router.route('/')
-.get(viewsControllers.hero)
-
-router.route('/home')
 .get(viewsControllers.home)
 
 router.route('/catalogo')
