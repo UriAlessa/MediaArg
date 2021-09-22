@@ -4,12 +4,6 @@ const Usuario = require("../models/Usuario")
 
 
 const viewsControllers = {
-    hero: (req, res) => {
-        res.render('hero', {
-            title: 'Bienvenido!',
-            logeado: req.session.logeado
-        })
-    },
     home: (req, res) => {
         res.render('index', {
             title: 'Home',
@@ -32,7 +26,7 @@ const viewsControllers = {
                 logeado: req.session.logeado,
                 error: null
             })
-            : res.redirect('/home')
+            : res.redirect('/')
     },
     signup: (req, res) => {
         !req.session.logeado 
@@ -41,7 +35,7 @@ const viewsControllers = {
             logeado: req.session.logeado,
             error: null
         })
-        : res.redirect('/home')
+        : res.redirect('/')
     },
     perfil: async (req, res) => {
         const peliculas = await Pelicula.find()
@@ -60,7 +54,7 @@ const viewsControllers = {
                 admin: req.session.admin
             })
         }
-        res.redirect('/home')
+        res.redirect('/')
     }
 }
 

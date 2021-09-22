@@ -43,6 +43,8 @@ const peliculasControllers = {
         }
     },
     borrarPelicula: async (req, res) => {
+        console.log(req.body)
+        console.log('aa')
         await Pelicula.findOneAndDelete({_id: req.params._id})
         res.redirect('/perfil')
     },

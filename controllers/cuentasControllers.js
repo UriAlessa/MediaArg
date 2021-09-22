@@ -77,7 +77,7 @@ const cuentasControllers = {
     },
     deslogear: (req, res) => {
         req.session.destroy(() => {
-            res.redirect('/home')
+            res.redirect('/')
         })
     }
 }

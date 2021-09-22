@@ -14,7 +14,7 @@ body {
 
 /* Bordes para divs */
 
-.card, .welcomeContainer, .peliculaCard, .loginMain form, .perfilSection, .cargarPelicula, .adminPanel, section.cargarPelicula form input, .editar, .borrar {
+.card, .welcomeContainer, .peliculaCard, .loginMain form, .perfilSection, .cargarPelicula, .adminPanel, input[type="submit"], .editar, .borrar {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -137,87 +137,6 @@ div.buscador {
 
 input {
     outline: none;
-}
-
-
-/* hero.hmtl */
-
-.heroBienvenida{
-    height: 100vh;
-    background-image: url('https://i.imgur.com/ft23GKz.jpg');
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.heroBienvenida div {
-    display: flex;
-    flex-direction: column;
-    height: 25vh;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.heroBienvenida div > h1 {
-    color: white;
-    font-weight: bold
-}
-
-.heroBienvenida > div > h1 > span {
-    color: red;
-}
-
-.heroBienvenida div > h3 {
-    color: white;
-    margin-top: 1vh;
-}
-
-.heroBienvenida div button, .heroBienvenida div button::after {
-    width: 380px;
-    height: 86px;
-    font-size: 36px;
-    font-family: 'Bebas Neue', cursive;
-    background: linear-gradient(45deg, transparent 5%, #FF013C 5%);
-    border: 0;
-    color: #fff;
-    letter-spacing: 3px;
-    line-height: 88px;
-    box-shadow: 6px 0px 0px #00E6F6;
-    outline: transparent;
-    position: relative;
-    cursor: pointer;
-}
-
-.heroBienvenida div button::after {
-    --slice-0: inset(50% 50% 50% 50%);
-    --slice-1: inset(80% -6px 0 0);
-    --slice-2: inset(50% -6px 30% 0);
-    --slice-3: inset(10% -6px 85% 0);
-    --slice-4: inset(40% -6px 43% 0);
-    --slice-5: inset(80% -6px 5% 0);
-    
-    content: 'AVAILABLE NOW';
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, transparent 3%, #00E6F6 3%, #00E6F6 5%, #FF013C 5%);
-    text-shadow: -3px -3px 0px #F8F005, 3px 3px 0px #00E6F6;
-    clip-path: var(--slice-0);
-}
-
-.heroBienvenida div button:hover::after {
-animation: 1s glitch;
-animation-timing-function: steps(2, end);
-cursor: pointer;
-}
-
-.heroBienvenida div button a {
-    text-decoration: none;
-    color: white;
 }
 
 /* index.html */
@@ -439,12 +358,13 @@ main.perfilMain {
 }
 
 section.perfilSection {
-    background-color: #c8ccce;
+    background-color: #6C63FF;
     height: 40vh;
     width: 26%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: white;
 }
 
 div.perfilAvatar {
@@ -457,13 +377,14 @@ div.perfilAvatar {
 }
 
 section.cargarPelicula {
-    background-color: #c8ccce;
-    height: 40vh;
+    background-color: #6C63FF;
+    min-height: 40vh;
     width: 70vw;
     margin-left: 1vw;
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: white;
 }
 
 section.cargarPelicula h2 {
@@ -473,20 +394,69 @@ section.cargarPelicula h2 {
 
 section.cargarPelicula form {
     margin-top: 2vh;
-    height: 20vh;
+    height: 30vh;
+    width: 85%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 1vh 1vw;
     align-items: center;
 }
 
-section.cargarPelicula form input {
-    padding: .5vh .5vw;
+div.inputLinea-container {
+    width: 100%;
+    border-bottom: 1px solid #343434;
+    margin-bottom: 2vh;
+}
+
+input.inputLinea {
+    background: none;
     border: none;
+    color: white;
+    width: 100%;
+    padding: 1vh 1vw;
+}
+
+input.inputLinea::placeholder {
+    color: white;
 }
 
 input[type="submit"] {
+    background: #2c974b;
+    color: #FFFFFF;
     cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    outline: 0 solid transparent;
+    padding: .7vh 1vw;
+    border: 0;
+    margin-bottom: 1.5vh;
+}
+
+input[type="submit"]:hover {
+    background-color: #218838;
+}
+
+.editar, .borrar {
+    background: rgb(223, 152, 20);
+    color: #FFFFFF;
+    cursor: pointer;
+    font-weight: 700;
+    padding: .2vh .4vw;
+    border: 0;
+    outline: 0 solid transparent;
+}
+
+.borrar {
+    background: red;
+}
+
+.botonesPelicula {
+    background-color: yellow;
+}
+
+.listaPeliculas-admin div div a {
+    margin-left: 1vw;
 }
 
 div.formBotones{
@@ -501,19 +471,31 @@ div.radioButtonsContainer {
     align-items: center;
     justify-content: center;
     text-align: center;
+    margin-bottom: 1.5vh;
 }
 
 div.radioButtonsContainer h4{
     margin-bottom: 1vh;
 }
 
+.textareaContainer {
+    width: 100%;
+}
+
+form div textarea {
+    height: 10vh;
+    width: 100%;
+    resize: none;
+}
+
 section.adminPanel {
-    background-color: #c8ccce;
+    background-color: #6C63FF;
     height: 40vh;
     width: 99%;
     margin-top: 2vh;
     display: flex;
     flex-direction: column;
+    color: white;
 }
 
 section.adminPanel h2 {
@@ -530,7 +512,7 @@ div.listaPeliculas-admin, div.listaUsuarios-admin {
     padding: 1vh 1vw;
     width: 30%;
     height: 30vh;
-    overflow-y: scroll;
+    overflow-y: auto;
     border: 1px solid black;
 }
 
@@ -551,73 +533,6 @@ div.listaPeliculas-admin > hr, div.listaUsuarios-admin > hr {
 div.listaUsuarios-admin {
     width: 30%;
     height: 30vh;
-}
-
-button.borrar, button.editar {
-    background-color: red;
-    padding: .5vh .5vw;
-    color: black;
-    font-weight: bold;
-    margin-left: 1vw;
-    border: none;
-    cursor: pointer;
-}
-
-button.editar {
-    background-color: orange;
-    margin-left: 0vw;
-}
-
-
-
-
-/* Keyframes >  */
-
-@keyframes glitch {
-    0% {
-        clip-path: var(--slice-1);
-        transform: translate(-20px, -10px);
-    }
-    10% {
-        clip-path: var(--slice-3);
-        transform: translate(10px, 10px);
-    }
-    20% {
-        clip-path: var(--slice-1);
-        transform: translate(-10px, 10px);
-    }
-    30% {
-        clip-path: var(--slice-3);
-        transform: translate(0px, 5px);
-    }
-    40% {
-        clip-path: var(--slice-2);
-        transform: translate(-5px, 0px);
-    }
-    50% {
-        clip-path: var(--slice-3);
-        transform: translate(5px, 0px);
-    }
-    60% {
-        clip-path: var(--slice-4);
-        transform: translate(5px, 10px);
-    }
-    70% {
-        clip-path: var(--slice-2);
-        transform: translate(-10px, 10px);
-    }
-    80% {
-        clip-path: var(--slice-5);
-        transform: translate(20px, -10px);
-    }
-    90% {
-        clip-path: var(--slice-1);
-        transform: translate(-10px, 0px);
-    }
-    100% {
-        clip-path: var(--slice-1);
-        transform: translate(0);
-    }
 }
 
 @media (min-width: 1025px) and (max-width: 1440px) {

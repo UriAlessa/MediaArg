@@ -12,11 +12,11 @@ const store = new mongo({
 const app = express()
 
 app.use(express.static('public'))
-app.set('view engine', 'ejs') // Defino que voy a trabajar con un motor de plantillas, template engine/view engine, y cual: ejs. Automaticamente va a buscar las vistas en la carpeta view, no tengo que indicarle las rutas.  Y va a buscar automaticamente archivos de tipo ejs. Los HTML que tengo, e
+app.set('view engine', 'ejs')
 app.use(express.urlencoded({extended: true}))
 app.use(session({
     secret: process.env.SECRET,
-    resave: false, // No me cambie la sesion en cada pedido que haga el usuario.
+    resave: false,
     saveUninitialized: false,
     store: store
 }))

@@ -14,22 +14,22 @@
         </section>
         <section class="cargarPelicula">
             <%if (editando) {%>
-                <h2 style="color: red;">Estás editando: <%=editando.titulo%></h2>
+                <h2 style="color: red;">Estás editando: <%=editando.titulo%> - Verifica la información y envía la información o rechazala.</h2>
             <%} else {%>
                 <h2>Añade una película al catálogo.</h2>
             <%}%>
             <form action="/pelicula/cargar" method="POST">
-                <div>
+                <div class="inputLinea-container">
                     <label for="titulo"></label>
-                    <input required type="text" name="titulo" placeholder="Titulo de la pelicula..." value="<%= editando ? editando.titulo : ''%>">   
+                    <input class="inputLinea" required type="text" name="titulo" placeholder="Titulo de la pelicula..." value="<%= editando ? editando.titulo : ''%>">   
                 </div>
-                <div>
+                <div class="textareaContainer">
                     <label for="descripcion"></label>
-                    <input required type="text" name="descripcion" placeholder="Descripción de la película..." value="<%= editando ? editando.descripcion : ''%>">
+                    <textarea name="descripcion" placeholder="Descripción de la película..."><%= editando ? editando.descripcion : ''%></textarea>
                 </div>
-                <div>
+                <div class="inputLinea-container">
                     <label for="imagen"></label>
-                    <input required type="text" name="imagen" placeholder="Introduce la URL de la imagen..." value="<%= editando ? editando.imagen : ''%>">
+                    <input class="inputLinea" required type="text" name="imagen" placeholder="Introduce la URL de la imagen..." value="<%= editando ? editando.imagen : ''%>">
                 </div>
                 <div class="radioButtonsContainer">
                     <h4>¿En qué genero encaja más esta pelicula? Aproximadamente.</h4>
@@ -46,10 +46,11 @@
                 </div>
                 <input type="hidden" name="_id" value="<%= editando ? editando._id : null %>">
                 <div class="formBotones">
-                    <input type="submit">
                     <%if (editando) {%>
-                        <a class="editar" href="/perfil"><button class="editar">Cancelar</button></a>  
-                    <%}%>
+                        <a class="editar" href="/editar-pelicula/<%= editando._id %>"><button class="editar">Enviar</button></a> 
+                        <%} else {%>
+                            <input type="submit">
+                        <%}%>
                 </div>
             </form>
         </section>
