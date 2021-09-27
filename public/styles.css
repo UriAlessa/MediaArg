@@ -403,6 +403,10 @@ section.cargarPelicula h2 {
     margin-top: 1vh;
 }
 
+.listaPeliculas-admin div div a {
+    text-decoration: none;
+}
+
 section.cargarPelicula form {
     margin-top: 2vh;
     height: 30vh;

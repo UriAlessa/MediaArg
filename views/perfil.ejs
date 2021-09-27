@@ -46,13 +46,21 @@
         </section>
         <section class="cargarPelicula">
             <h2>Editar o borrar una película</h2>
-            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; padding: 1vh 1vw;">
-                <% let peliculasAprobadas = peliculas.filter(pelicula => pelicula.aprobado) %>
-                    <% peliculasAprobadas.forEach(pelicula => { %>
-                        <h4><%= pelicula.titulo %></h4>
-                        <a href="/borrar-pelicula/<%=pelicula.id%>">Borrar</a>
-                        <a href="/editar-pelicula/<%=pelicula.id%>">Editar</a>
-                    <% }) %>
+            <div class="listaPeliculas-admin">
+                <h5>Total de peliculas: <%=peliculas.length%></h5>
+                <hr>
+                <%let peliculasAprobadas = peliculas.filter((pelicula) => pelicula.aprobado)%>
+                <% peliculasAprobadas.forEach(pelicula => { %>
+                    <div>
+                        <div>
+                            <p><%=pelicula.titulo%></p>
+                        </div>
+                        <div>
+                            <a class="borrar" href="/borrar-pelicula/<%=pelicula.id%>">Borrar</a>
+                            <a class="editar" href="/editar-pelicula/<%=pelicula.id%>">Editar</a>
+                        </div>
+                    </div>
+                <% }) %>
             </div>
         </section>
     </main>
