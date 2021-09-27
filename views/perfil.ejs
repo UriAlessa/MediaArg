@@ -2,19 +2,9 @@
 <body>
     <%- include('partials/header.ejs') %>
     <main class="perfilMain">
-        <section class="perfilSection">
-            <div>
-                <div class="perfilAvatar" style="background-image: url(<%=avatar%>);"></div>
-            </div>
-            <h3><%=nombre + ' ' + apellido%></h3>
-            <h3><%= email %></h3>
-            <% if (admin) { %>
-                <h3>Eres un usuario administrador.</h3>
-            <%} %>
-        </section>
         <section class="cargarPelicula">
             <%if (editando) {%>
-                <h2 style="color: red;">Estás editando: <%=editando.titulo%> - Verifica la información y envía la información o rechazala.</h2>
+                <h2 style="color: red;">Estás editando: <%=editando.titulo%> - Verifica la información y haz click en enviar.</h2>
             <%} else {%>
                 <h2>Añade una película al catálogo.</h2>
             <%}%>
@@ -44,65 +34,26 @@
                         <label for="genero">Comedia</label>
                     </div>
                 </div>
-                <input type="hidden" name="_id" value="<%= editando ? editando._id : null %>">
+                <input type="hidden" name="_id" value="<%= editando ? editando.id : null %>">
                 <div class="formBotones">
                     <%if (editando) {%>
-                        <a class="editar" href="/editar-pelicula/<%= editando._id %>"><button class="editar">Enviar</button></a> 
+                        <a class="editar" href="/editar-pelicula/<%= editando.id %>"><button class="editar">Enviar</button></a> 
                         <%} else {%>
                             <input type="submit">
                         <%}%>
                 </div>
             </form>
         </section>
-        <% if (admin) { %>
-            <section class="adminPanel">
-                <h2>Panel Administrador.</h2>
-                    <div class="adminContainer">
-                        <div class="listaPeliculas-admin">
-                            <h5>Total de peliculas: <%=peliculas.length%></h5>
-                            <hr>
-                            <%let peliculasAprobadas = peliculas.filter((pelicula) => pelicula.aprobado)%>
-                            <% peliculasAprobadas.forEach(pelicula => { %>
-                                <div>
-                                    <div>
-                                        <p><%=pelicula.titulo%></p>
-                                    </div>
-                                    <div>
-                                        <a class="editar" href="/editar-pelicula/<%= pelicula._id %>"><button class="editar">Editar</button></a>  
-                                        <a class="borrar" href="/borrar-pelicula/<%= pelicula._id %>"><button class="borrar">Borrar</button></a>
-                                    </div>
-                                </div>
-                            <% }) %>
-                        </div>
-                        <div class="listaPeliculas-admin">
-                            <%let peliculaNoAprobada = peliculas.filter((pelicula) => !pelicula.aprobado)%>
-                            <h5>Peliculas pendientes de aprobación: <%=peliculaNoAprobada.length%></h5>
-                            <hr>
-                            <% peliculaNoAprobada.forEach(pelicula => { %>
-                                <div>
-                                    <div>
-                                        <p><%=pelicula.titulo%></p>
-                                    </div>
-                                    <div>
-                                        <a class="editar" href="/editar-pelicula/<%= pelicula._id %>"><button class="editar">Aprobar</button></a>  
-                                        <a class="borrar" href="/borrar-pelicula/<%= pelicula._id %>"><button class="borrar">No Aprobar</button></a>
-                                    </div>
-                                </div>
-                            <% }) %>
-                        </div>
-                        <div class="listaUsuarios-admin">
-                            <h5>Total de usuarios: <%=usuarios.length%></h5>
-                            <hr>
-                            <% usuarios.forEach(usuario => { %>
-                                <div>
-                                    <div>
-                                        <p><%=usuario.nombre + ' ' + usuario.apellido%> - <%=usuario.email%><%=usuario.admin ? ' - Admin' : ''%></p>
-                                    </div>
-                                </div>
-                            <% }) %>
-                        </div>
-                    </div>
-            </section>
-        <%}%>
+        <section class="cargarPelicula">
+            <h2>Editar o borrar una película</h2>
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; padding: 1vh 1vw;">
+                <% let peliculasAprobadas = peliculas.filter(pelicula => pelicula.aprobado) %>
+                    <% peliculasAprobadas.forEach(pelicula => { %>
+                        <h4><%= pelicula.titulo %></h4>
+                        <a href="/borrar-pelicula/<%=pelicula.id%>">Borrar</a>
+                        <a href="/editar-pelicula/<%=pelicula.id%>">Editar</a>
+                    <% }) %>
+            </div>
+        </section>
     </main>
 <%- include('partials/footer.ejs') %>

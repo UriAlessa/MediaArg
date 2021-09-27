@@ -1,13 +1,34 @@
-const mongoose = require('mongoose')
+const Sequelize = require('sequelize')
+const database = require('../config/database')
 
-const peliculaSchema = new mongoose.Schema({
-    imagen: {type: String},
-    titulo: {type: String},
-    descripcion: {type: String},
-    aprobado: {type: Boolean, default: false},
-    genero: {type: String}
+const Pelicula = database.define('pelicula', {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true
+    },
+    titulo: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    descripcion: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    imagen: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    genero: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    aprobado: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: 1
+    }
 })
-
-const Pelicula = mongoose.model('pelicula', peliculaSchema)
 
 module.exports = Pelicula

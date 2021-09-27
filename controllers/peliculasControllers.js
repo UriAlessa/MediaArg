@@ -4,65 +4,38 @@ const Usuario = require("../models/Usuario");
 
 const peliculasControllers = {
     nuevaPelicula: async (req, res) => {
-        let {imagen, titulo, descripcion, aprobado, genero, _id} = req.body
-        const peliculas = await Pelicula.find()
-        let nuevaPelicula; 
+        const {imagen, titulo, descripcion, aprobado, genero, _id} = req.body
+        console.log(req.body)
         if (!_id) {
-            if (req.session.admin) {
-                aprobado = true
-            }
-            nuevaPelicula = new Pelicula({
-                imagen,
-                titulo,
-                descripcion,
-                aprobado,
-                genero
+            console.log('NUEVA')
+            await Pelicula.create({
+            imagen,
+            titulo,
+            descripcion,
+            genero,
+            aprobado,
             })
         } else {
-            nuevaPelicula = await Pelicula.findOne({_id})
-            nuevaPelicula.titulo = titulo
-            nuevaPelicula.imagen = imagen
-            nuevaPelicula.descripcion = descripcion
-            nuevaPelicula.genero = genero
-            nuevaPelicula.aprobado = true
+            console.log('UPDATE')
+            await Pelicula.update(
+                {...req.body},
+                {where: {id: _id}}
+            )
         }
-        try {
-            await nuevaPelicula.save()
-            if (!req.session.admin) {
-                res.render('catalogo', {
-                    title: 'Catalogo',
-                    peliculas,
-                    logeado: req.session.logeado,
-                    editando: true
-                })
-            } else {
-                res.redirect('/catalogo')
-            }
-        } catch(e) {
-            console.log(e)
-        }
+        res.redirect('/catalogo')
     },
     borrarPelicula: async (req, res) => {
-        console.log(req.body)
-        console.log('aa')
-        await Pelicula.findOneAndDelete({_id: req.params._id})
-        res.redirect('/perfil')
+        let pelicula = await Pelicula.findByPk(req.params._id)
+        await pelicula.destroy()
+        res.redirect('/catalogo')
     },
     editarPelicula: async (req, res) => {
-        let pelicula = await Pelicula.findOne({_id: req.params._id})
-        const peliculas = await Pelicula.find()
-        const usuarios = await Usuario.find()
+        let pelicula = await Pelicula.findByPk(req.params._id)
+        let peliculas = await Pelicula.findAll({raw: true})
         res.render('perfil', {
             title: 'Editar Pelicula',
             editando: pelicula,
-            usuarios,
-            peliculas,
-            logeado: req.session.logeado,
-            nombre: req.session.nombre,
-            apellido: req.session.apellido,
-            avatar: req.session.avatar,
-            email: req.session.email,
-            admin: req.session.admin
+            peliculas
         })
     }
 }

@@ -5,11 +5,6 @@
     <nav>
         <a href="/" class="<%= title.includes('Home') ? 'active' : null %>">Home</a>
         <a href="/catalogo" class="<%= title.includes('Catalogo') ? 'active' : null %>">Catálogo</a>
-        <% if (!logeado) { %>
-            <a href="/login" class="<%= title.includes('Ingresar') ? 'active' : null %>">Ingresar</a>
-        <% } else { %>
-            <a href="/perfil" class="<%= title.includes('Perfil') ? 'active' : null %>">Perfil</a>
-            <a href="/signout">Salir</a>
-        <%}%>
+        <a href="/perfil" class="<%= title.includes('Cargar pelicula') ? 'active' : null %>">Cargar Pelicula</a>
     </nav>
 </header>

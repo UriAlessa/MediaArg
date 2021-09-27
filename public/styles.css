@@ -14,7 +14,16 @@ body {
 
 /* Bordes para divs */
 
-.card, .welcomeContainer, .peliculaCard, .loginMain form, .perfilSection, .cargarPelicula, .adminPanel, input[type="submit"], .editar, .borrar {
+.card,
+.welcomeContainer,
+.peliculaCard,
+.loginMain form,
+.perfilSection,
+.cargarPelicula,
+.adminPanel,
+input[type="submit"],
+.editar,
+.borrar {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -31,12 +40,12 @@ header {
     justify-content: space-between;
 }
 
-header div img{
+header div img {
     margin-left: 5vw;
     margin-top: 1vh;
 }
 
-.marca span{
+.marca span {
     color: red;
 }
 
@@ -46,6 +55,7 @@ nav {
     display: flex;
     justify-content: space-between;
 }
+
 nav a {
     text-decoration: none;
     color: white;
@@ -58,14 +68,14 @@ nav a {
 
 /* Generales > Footer */
 
-footer{
+footer {
     width: 100%;
     padding: 50px 0px;
     background-image: url(./assets/background-footer.svg);
     background-size: cover;
 }
 
-.container__footer{
+.container__footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -74,13 +84,13 @@ footer{
     margin-top: 100px;
 }
 
-.box__footer{
+.box__footer {
     display: flex;
     flex-direction: column;
     padding: 40px;
 }
 
-.box__footer .terms{
+.box__footer .terms {
     max-width: 350px;
     margin-top: 20px;
     font-weight: 500;
@@ -88,39 +98,39 @@ footer{
     font-size: 18px;
 }
 
-.box__footer h2{
+.box__footer h2 {
     margin-bottom: 30px;
     color: #343434;
     font-weight: 700;
 }
 
-.box__footer a{
+.box__footer a {
     margin-top: 10px;
     color: #7a7a7a;
     font-weight: 600;
 }
 
-.box__footer a:hover{
+.box__footer a:hover {
     opacity: 0.8;
 }
 
-.box__footer a .fab{
+.box__footer a .fab {
     font-size: 20px;
 }
 
-.box__copyright{
+.box__copyright {
     max-width: 1200px;
     margin: auto;
     text-align: center;
     padding: 0px 40px;
 }
 
-.box__copyright p{
+.box__copyright p {
     margin-top: 20px;
     color: #7a7a7a;
 }
 
-.box__copyright hr{
+.box__copyright hr {
     border: none;
     height: 1px;
     background-color: #7a7a7a;
@@ -161,7 +171,7 @@ div.welcomeContainer {
     margin: 0 auto;
 }
 
-div.welcomeContainer h1{
+div.welcomeContainer h1 {
     text-align: center;
     color: white;
     margin-bottom: 1vh;
@@ -196,7 +206,7 @@ div.card {
     align-items: center;
     justify-content: space-around;
     background-color: #6C63FF;
-    box-shadow:  10px 6px #6159fa;
+    box-shadow: 10px 6px #6159fa;
     padding: 0vh 1vw;
 }
 
@@ -236,7 +246,7 @@ div.buscador {
     border-bottom-right-radius: 15px;
 }
 
-input.searchInput{
+input.searchInput {
     margin-left: 0.5vw;
 }
 
@@ -255,83 +265,83 @@ div.peliculasContainer {
     flex-wrap: wrap;
 }
 
-.peliculaCard{
+.peliculaCard {
     flex: 1;
     flex-basis: 300px;
     flex-grow: 0;
     height: 440px;
     background: #fff;
     border: 2px solid #fff;
-    box-shadow: 0px 4px 7px rgba(0,0,0,.5);
+    box-shadow: 0px 4px 7px rgba(0, 0, 0, .5);
     cursor: pointer;
-    transition: all .5s cubic-bezier(.8,.5,.2,1.4);
+    transition: all .5s cubic-bezier(.8, .5, .2, 1.4);
     overflow: hidden;
     position: relative;
     margin: 1vh 0;
 }
 
-.peliculaCard img{
+.peliculaCard img {
     width: 100%;
-    height:100%;
-    transition: all .5s cubic-bezier(.8,.5,.2,1.4);
+    height: 100%;
+    transition: all .5s cubic-bezier(.8, .5, .2, 1.4);
 }
 
-.descriptions{
+.descriptions {
     position: absolute;
-    top:0px;
-    left:0px;
-    background-color: rgba(255,255,255,.7);
-    width:100%;
-    height:100%;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(255, 255, 255, .7);
+    width: 100%;
+    height: 100%;
     transition: all .7s ease-in-out;
     padding: 20px;
     box-sizing: border-box;
     clip-path: circle(0% at 100% 100%);
 }
 
-.peliculaCard:hover .descriptions{
-    left:0px;
+.peliculaCard:hover .descriptions {
+    left: 0px;
     transition: all .7s ease-in-out;
     clip-path: circle(75%);
 }
 
-.peliculaCard:hover{
-    transition: all .5s cubic-bezier(.8,.5,.2,1.4);
-    box-shadow: 0px 2px 3px rgba(0,0,0,.3);
+.peliculaCard:hover {
+    transition: all .5s cubic-bezier(.8, .5, .2, 1.4);
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, .3);
     transform: scale(.97);
 }
 
-.peliculaCard:hover img{
-    transition: all .5s cubic-bezier(.8,.5,.2,1.4);
+.peliculaCard:hover img {
+    transition: all .5s cubic-bezier(.8, .5, .2, 1.4);
     transform: scale(1.6) rotate(20deg);
     filter: blur(3px);
 }
 
-.peliculaCard h1{
+.peliculaCard h1 {
     color: #ff3838;
     letter-spacing: 1px;
     margin: 0px;
 }
 
-.peliculaCard p{
+.peliculaCard p {
     line-height: 24px;
     height: 70%;
 }
 
-.peliculaCard button{
+.peliculaCard button {
     width: fit-content;
     height: 40px;
     cursor: pointer;
     border-style: none;
     background-color: #ff3838;
-    color:#fff;
+    color: #fff;
     font-size: 15px;
     outline: none;
-    box-shadow: 0px 2px 3px rgba(0,0,0,.4);
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, .4);
     transition: all .5s ease-in-out;
 }
 
-.movieCard button:hover{
+.movieCard button:hover {
     transform: scale(.95) translateX(-5px);
     transition: all .5s ease-in-out;
 }
@@ -378,13 +388,14 @@ div.perfilAvatar {
 
 section.cargarPelicula {
     background-color: #6C63FF;
-    min-height: 40vh;
-    width: 70vw;
-    margin-left: 1vw;
+    min-height: 50vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     color: white;
+    margin-bottom: 1vh;
 }
 
 section.cargarPelicula h2 {
@@ -437,7 +448,8 @@ input[type="submit"]:hover {
     background-color: #218838;
 }
 
-.editar, .borrar {
+.editar,
+.borrar {
     background: rgb(223, 152, 20);
     color: #FFFFFF;
     cursor: pointer;
@@ -459,7 +471,7 @@ input[type="submit"]:hover {
     margin-left: 1vw;
 }
 
-div.formBotones{
+div.formBotones {
     display: flex;
     width: 30%;
     justify-content: space-around;
@@ -474,7 +486,7 @@ div.radioButtonsContainer {
     margin-bottom: 1.5vh;
 }
 
-div.radioButtonsContainer h4{
+div.radioButtonsContainer h4 {
     margin-bottom: 1vh;
 }
 
@@ -503,12 +515,13 @@ section.adminPanel h2 {
     padding: 1vh;
 }
 
-div.adminContainer{
+div.adminContainer {
     display: flex;
     justify-content: space-around;
 }
 
-div.listaPeliculas-admin, div.listaUsuarios-admin {
+div.listaPeliculas-admin,
+div.listaUsuarios-admin {
     padding: 1vh 1vw;
     width: 30%;
     height: 30vh;
@@ -516,17 +529,18 @@ div.listaPeliculas-admin, div.listaUsuarios-admin {
     border: 1px solid black;
 }
 
-div.listaPeliculas-admin div{
+div.listaPeliculas-admin div {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1vh;
 }
 
-div.listaPeliculas-admin div div img{
+div.listaPeliculas-admin div div img {
     width: 100px;
 }
 
-div.listaPeliculas-admin > hr, div.listaUsuarios-admin > hr {
+div.listaPeliculas-admin>hr,
+div.listaUsuarios-admin>hr {
     margin: 1vh 0;
 }
 
@@ -540,17 +554,17 @@ div.listaUsuarios-admin {
         width: 35%;
     }
 
-    .perfilSection h3{
+    .perfilSection h3 {
         font-size: 14px;
     }
 }
 
-@media (min-width: 768px ) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1024px) {
     nav {
         width: 35%;
     }
 
-    .perfilSection h3{
+    .perfilSection h3 {
         font-size: 12px;
     }
 }
@@ -559,7 +573,8 @@ div.listaUsuarios-admin {
     nav {
         width: 50%;
     }
-    .perfilSection h3{
+
+    .perfilSection h3 {
         font-size: 12px;
     }
 }
@@ -592,11 +607,11 @@ div.listaUsuarios-admin {
         height: 30vh !important;
     }
 
-    section.cargarPelicula form input  {
+    section.cargarPelicula form input {
         padding: 1vh 1vw;
     }
 
-    .adminPanel{
+    .adminPanel {
         min-height: 100vh;
         padding: 1vh 1vw;
     }
@@ -605,12 +620,12 @@ div.listaUsuarios-admin {
         flex-direction: column;
     }
 
-    .listaPeliculas-admin{
+    .listaPeliculas-admin {
         width: 100% !important;
         margin-bottom: 2vh;
     }
 
-    .listaUsuarios-admin{
+    .listaUsuarios-admin {
         width: 100% !important;
         margin: 0 1vw 1vh 1vw;
     }

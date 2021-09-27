@@ -10,16 +10,8 @@ router.route('/')
 router.route('/catalogo')
 .get(viewsControllers.catalogo)
 
-router.route('/login')
-.get(viewsControllers.login)
-.post(cuentasControllers.logearse)
-
-router.route('/signup')
-.get(viewsControllers.signup)
-.post(cuentasControllers.nuevaCuenta)
-
 router.route('/perfil')
-.get(viewsControllers.perfil)
+.get(viewsControllers.cargarPelicula)
 
 router.route('/pelicula/cargar')
 .post(peliculasControllers.nuevaPelicula)

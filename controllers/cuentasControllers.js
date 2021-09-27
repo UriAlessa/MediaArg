@@ -1,4 +1,3 @@
-const path = require('path');
 const Pelicula = require('../models/Pelicula');
 const Usuario = require("../models/Usuario");
 const bcryptjs = require('bcryptjs')
