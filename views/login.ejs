@@ -1,26 +1,48 @@
 <%- include('partials/formHead.ejs') %>
 <body>
-    <%- include('partials/header.ejs') %>
-    <main class="loginMain">
-        <h1>Ingresa a tu cuenta</h1>
-        <form method="POST" action="/login" id="login-form" class="login-form" autocomplete="off">
-            <div>
-              <label class="label-email">
-                <input type="email" class="text" name="email" placeholder="Email" tabindex="1" required />
-                <span class="required">Email</span>
-              </label>
-            </div>
-            <div>
-              <label class="label-password">
-                <input type="password" class="text" name="contraseña" placeholder="Contraseña" tabindex="3" required min="6" />
-                <span class="required">Contraseña</span>
-              </label>
-            </div>
-            <input type="submit" />
-        </form>
-        <% if (error) { %>
-          <h4 style="color: red;"><%= error %></h4>
-        <% } %>
-        <a href="/signup">¿Primera vez? Crea una cuenta desde aquí</a>
-    </main>
-<%- include('partials/footer.ejs') %> 
+  <%- include('partials/header.ejs') %>
+  <main class="loginMain">
+    <h1>Ingresa a tu cuenta</h1>
+    <form
+      method="POST"
+      action="/login"
+      id="login-form"
+      class="login-form"
+      autocomplete="off"
+    >
+      <div>
+        <label class="label-email">
+          <input
+            type="email"
+            class="text"
+            name="email"
+            placeholder="Email"
+            tabindex="1"
+            required
+          />
+          <span class="required">Email</span>
+        </label>
+      </div>
+      <div>
+        <label class="label-password">
+          <input
+            type="password"
+            class="text"
+            name="contraseña"
+            placeholder="Contraseña"
+            tabindex="3"
+            required
+            min="6"
+          />
+          <span class="required">Contraseña</span>
+        </label>
+      </div>
+      <input type="submit" />
+    </form>
+    <% if (error) { %>
+    <h4 style="color: red"><%= error %></h4>
+    <% } %>
+    <a href="/signup">¿Primera vez? Crea una cuenta desde aquí</a>
+  </main>
+  <%- include('partials/footer.ejs') %>
+</body>
