@@ -42,7 +42,6 @@ const cuentasControllers = {
         admin: req.session.admin,
       })
     } catch (error) {
-      console.log(error)
       res.render("signup", {
         title: "Registrarse",
         error: error,
