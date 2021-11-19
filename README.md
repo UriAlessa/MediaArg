@@ -2,6 +2,8 @@
 
 Página web sobre un catálogo de películas, un usuario puede proponer una película y el administrador aprobarla!
 
+Demo: http://mediaarg.herokuapp.com
+
 ## Comenzando 🚀
 
 * Instalar dependencias con: npm install
